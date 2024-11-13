@@ -1,6 +1,6 @@
 <?php
 // Inclut le fichier de connexion à la base
-require_once '../src/Config/Database.php';
+require_once '../src/Config/Controllers/Database.php';
 // Indique que la réponse sera en JSON
 header('Content-Type: application/json');
 try {
