@@ -1,6 +1,6 @@
 <?php
 // Dans un fichier public/test.php
-require_once '../src/Config/Controllers/Database.php';
+require_once '../src/Config/Database.php';
 require_once '../src/Config/Models/ListModel.php';
 require_once '../src/Config/Models/TaskModel.php';
 // Test des listes

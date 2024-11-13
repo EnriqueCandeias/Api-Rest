@@ -20,6 +20,7 @@ $router->addRoute('POST', 'lists', 'ListController', 'create');
 // Routes pour les tâches
 $router->addRoute('GET', 'lists/{id}/tasks', 'TaskController', 'index');
 $router->addRoute('POST', 'lists/{id}/tasks', 'TaskController', 'create');
+
 try {
     $method = $_SERVER['REQUEST_METHOD'];
     $uri = $_GET['uri'] ?? '';
