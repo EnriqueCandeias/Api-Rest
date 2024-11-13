@@ -1,0 +1,13 @@
+{
+    "name": "webwizards/todo-api",
+    "description": "API REST pour la gestion de listes de taches",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0"
+    }
+}
