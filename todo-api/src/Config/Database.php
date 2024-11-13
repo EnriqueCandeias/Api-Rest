@@ -1,5 +1,5 @@
 <?php
-namespace Config;
+namespace App\Config;
 
 class Database {
     // Paramètres de connexion à la base de données

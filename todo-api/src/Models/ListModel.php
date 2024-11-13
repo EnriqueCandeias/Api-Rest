@@ -1,5 +1,5 @@
 <?php
-namespace Models;
+namespace App\Models;
 require_once 'AbstractModel.php';
 class ListModel extends AbstractModel {
     protected string $table = "lists";

@@ -1,5 +1,6 @@
 <?php
-namespace Config;
+namespace App\Config;
+
 class Router {
     private array $routes = [];
     public function addRoute(string $method, string $path, string $controller, string $action): void {
@@ -24,7 +25,7 @@ class Router {
                 // Enlever le premier élément (match complet)
                 array_shift($matches);
                 // Créer le contrôleur et appeler l'action
-                $controllerName = "Controllers\\" . $route['controller'];
+                $controllerName = "App\Controllers\\" . $route['controller'];
                 $controller = new $controllerName();
                 call_user_func_array([$controller, $route['action']], $matches);
                 return;

@@ -1,7 +1,7 @@
 <?php
 
-namespace Controllers;
-use Models\TaskModel;
+namespace App\Controllers;
+use App\Models\TaskModel;
 
 class TaskController extends AbstractController {
     private TaskModel $taskModel;

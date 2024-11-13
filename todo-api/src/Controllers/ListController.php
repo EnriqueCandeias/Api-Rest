@@ -1,8 +1,8 @@
 <?php
 
-namespace Controllers;
+namespace App\Controllers;
 
-use Models\ListModel;
+use App\Models\ListModel;
 
 class ListController extends AbstractController {
     private ListModel $listModel;

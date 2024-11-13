@@ -1,10 +1,12 @@
 <?php
-namespace Models;
+namespace App\Models;
+use App\Config\DataBase;
+
 abstract class AbstractModel {
     protected \PDO $db;
     protected string $table;
     public function __construct() {
-        $database = new \Config\Database();
+        $database = new \App\Config\Database();
         $this->db = $database->getConnection();
     }
 // Méthode commune pour nettoyer les entrées
