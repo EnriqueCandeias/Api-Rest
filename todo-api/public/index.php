@@ -23,7 +23,9 @@ $router->addRoute('POST', 'lists/{id}/tasks', 'TaskController', 'create');
 
 try {
     $method = $_SERVER['REQUEST_METHOD'];
-    $uri = $_GET['uri'] ?? '';
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+    $uri = trim($uri, '/');
+
     $router->handleRequest($method, $uri);
 } catch (Exception $e) {
     http_response_code(500);
