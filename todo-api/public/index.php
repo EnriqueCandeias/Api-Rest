@@ -16,10 +16,15 @@ $router = new Router();
 $router->addRoute('GET', 'lists', 'ListController', 'index');
 $router->addRoute('GET', 'lists/{id}', 'ListController', 'show');
 $router->addRoute('POST', 'lists', 'ListController', 'create');
+$router->addRoute('PUT', 'lists/{id}', 'ListController', 'update');
+$router->addRoute('DELETE', 'lists/{id}', 'ListController', 'delete');
 
 // Routes pour les tâches
 $router->addRoute('GET', 'lists/{id}/tasks', 'TaskController', 'index');
 $router->addRoute('POST', 'lists/{id}/tasks', 'TaskController', 'create');
+$router->addRoute('PUT', 'tasks/{id}', 'TaskController', 'update');
+$router->addRoute('PATCH', 'tasks/{id}/status', 'TaskController', 'updateStatus');
+$router->addRoute('DELETE', 'tasks/{id}', 'TaskController', 'delete');
 
 try {
     $method = $_SERVER['REQUEST_METHOD'];

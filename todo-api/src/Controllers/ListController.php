@@ -35,27 +35,75 @@ class ListController extends AbstractController {
         }
     }
 
-        // POST /lists
-        public function create(): void {
-            try {
-                $data = $this->getRequestData();
-                // Validation
-                if (!isset($data['title'])) {
-                    $this->errorResponse("Le titre est obligatoire");
-                    return;
-                }
-
-                $id = $this->listModel->create(
-                        $data['title'],
-                        $data['description'] ?? null
-                );
-
-                $this->jsonResponse([
-                        'message' => 'Liste créée avec succès',
-                        'id' => $id
-                ], 201);
-            } catch (\Exception $e) {
-                $this->errorResponse($e->getMessage(), 5);
+    // POST /lists
+    public function create(): void {
+        try {
+            $data = $this->getRequestData();
+            // Validation
+            if (!isset($data['title'])) {
+                $this->errorResponse("Le titre est obligatoire");
+                return;
             }
+
+            $id = $this->listModel->create(
+                    $data['title'],
+                    $data['description'] ?? null
+            );
+
+            $this->jsonResponse([
+                    'message' => 'Liste créée avec succès',
+                    'id' => $id
+            ], 201);
+        } catch (\Exception $e) {
+            $this->errorResponse($e->getMessage(), 5);
         }
+    }
+
+    // PUT /lists/{id}
+    public function update(int $id): void {
+        try {
+            $data = $this->getRequestData();
+           
+            if (!isset($data['title'])) {
+                $this->errorResponse("Le titre est obligatoire");
+                return;
+            }
+
+
+            $success = $this->listModel->update(
+                $id,
+                $data['title'],
+                $data['description'] ?? null
+            );
+
+
+            if (!$success) {
+                $this->errorResponse("Liste non trouvée", 404);
+                return;
+            }
+
+
+            $this->jsonResponse(['message' => 'Liste mise à jour avec succès']);
+        } catch (\Exception $e) {
+            $this->errorResponse($e->getMessage(), 500);
+        }
+    }
+
+
+    // DELETE /lists/{id}
+    public function delete(int $id): void {
+        try {
+            $success = $this->listModel->delete($id);
+
+            if (!$success) {
+                $this->errorResponse("Liste non trouvée", 404);
+                return;
+            }
+
+            $this->jsonResponse(['message' => 'Liste supprimée avec succès']);
+        } catch (\Exception $e) {
+            $this->errorResponse($e->getMessage(), 500);
+        }
+    }
+       
 }
